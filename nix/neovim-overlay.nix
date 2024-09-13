@@ -15,14 +15,22 @@ let
 
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
-  pkgs-wrapNeovim = inputs.nixpkgs.legacyPackages.${pkgs.system};
+  # pkgs-wrapNeovim = inputs.nixpkgs.legacyPackages.${pkgs.system};
+  pkgs-wrapNeovim = import inputs.nixpkgs {
+    inherit (pkgs) system;
+    overlays = [
+      inputs.neovim-nightly-overlay.overlays.default
+      (final: prev: { neovim-unwrapped = prev.neovim; })
+    ];
+    config = { };
+  };
 
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix { inherit pkgs-wrapNeovim; };
 
   all-plugins = with pkgs.vimPlugins; [ ];
 
-  extraPackages = with pkgs; [];
+  extraPackages = with pkgs; [ ];
 in
 {
   # This is the neovim derivation
