@@ -38,6 +38,10 @@ in
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
+    withPython3 = false;
+    withRuby = false;
+    withNodeJs = false;
+    withSqlite = false;
   };
 
   # This can be symlinked in the devShell's shellHook
