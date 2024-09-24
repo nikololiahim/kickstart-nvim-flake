@@ -6,6 +6,7 @@ return {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
   },
+
   keys = {
     {
       "<leader>?",
@@ -15,4 +16,12 @@ return {
       desc = "Buffer Local Keymaps (which-key)",
     },
   },
+
+  config = function() 
+    local wk = require("which-key")
+    wk.add({
+      { "-", "<cmd>Ex<cr>", mode = "n", desc = "Open Netrw in the current directory" },
+      { "<esc>", "<cmd>nohlsearch<cr>", mode = "n", desc = "Remove search highlights" },
+    })
+  end,
 }
