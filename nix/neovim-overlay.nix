@@ -31,6 +31,7 @@ let
   all-plugins = with pkgs.vimPlugins; [
     (mkNvimPlugin inputs.lazy-nvim "lazy.nvim")
     (mkNvimPlugin inputs.which-key-nvim "which-key.nvim")
+    (mkNvimPlugin inputs.tokyonight-nvim "tokyonight.nvim")
   ];
 
   extraPackages = with pkgs; [ ];

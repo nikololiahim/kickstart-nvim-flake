@@ -6,6 +6,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nixfmt.url = "github:NixOS/nixfmt";
     lazy-nvim = {
       url = "github:folke/lazy.nvim";
       flake = false;
@@ -14,14 +15,10 @@
       url = "github:folke/which-key.nvim";
       flake = false;
     };
-    nixfmt.url = "github:NixOS/nixfmt";
-
-    # Add bleeding-edge plugins here.
-    # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
-    # wf-nvim = {
-    #   url = "github:Cassin01/wf.nvim";
-    #   flake = false;
-    # };
+    tokyonight-nvim = {
+      url = "github:folke/tokyonight.nvim";
+      flake = false;
+    };
   };
 
   outputs =

@@ -455,6 +455,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixfmt": "nixfmt",
         "nixpkgs": "nixpkgs_3",
+        "tokyonight-nvim": "tokyonight-nvim",
         "which-key-nvim": "which-key-nvim"
       }
     },
@@ -485,6 +486,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tokyonight-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726469029,
+        "narHash": "sha256-d0izq6GCa5XWigiQMY3ODrdJ3jV8Lw8KCTADQA6GbXc=",
+        "owner": "folke",
+        "repo": "tokyonight.nvim",
+        "rev": "817bb6ffff1b9ce72cdd45d9fcfa8c9cd1ad3839",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "tokyonight.nvim",
         "type": "github"
       }
     },
