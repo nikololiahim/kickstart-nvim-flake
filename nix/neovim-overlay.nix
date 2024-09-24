@@ -25,16 +25,23 @@ let
     config = { };
   };
 
+  extraPackages = with pkgs; [
+    gcc
+    tree-sitter
+    nodejs
+  ];
+
   # This is the helper function that builds the Neovim derivation.
-  mkNeovim = pkgs.callPackage ./mkNeovim.nix { inherit pkgs-wrapNeovim; };
+  mkNeovim = pkgs.callPackage ./mkNeovim.nix {
+    inherit pkgs-wrapNeovim;
+  };
 
   all-plugins = with pkgs.vimPlugins; [
     (mkNvimPlugin inputs.lazy-nvim "lazy.nvim")
     (mkNvimPlugin inputs.which-key-nvim "which-key.nvim")
     (mkNvimPlugin inputs.tokyonight-nvim "tokyonight.nvim")
+    (mkNvimPlugin inputs.nvim-treesitter "nvim-treesitter")
   ];
-
-  extraPackages = with pkgs; [ ];
 
   nvim-pkg = mkNeovim {
     plugins = all-plugins;

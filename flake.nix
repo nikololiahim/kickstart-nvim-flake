@@ -19,6 +19,10 @@
       url = "github:folke/tokyonight.nvim";
       flake = false;
     };
+    nvim-treesitter = {
+      url = "github:nvim-treesitter/nvim-treesitter";
+      flake = false;
+    };
   };
 
   outputs =

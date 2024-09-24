@@ -447,6 +447,22 @@
         "type": "github"
       }
     },
+    "nvim-treesitter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727162815,
+        "narHash": "sha256-5y1eRUCkuU2IsNHP5Ne99tyZXjQUW/JhkjN2QWxvh+M=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "rev": "6511cd984ab4b21e28f83af488f38dc89c3b0586",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -455,6 +471,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixfmt": "nixfmt",
         "nixpkgs": "nixpkgs_3",
+        "nvim-treesitter": "nvim-treesitter",
         "tokyonight-nvim": "tokyonight-nvim",
         "which-key-nvim": "which-key-nvim"
       }
