@@ -96,13 +96,15 @@ let
 
     buildPhase = ''
       mkdir -p $out/nvim
-      # mkdir -p $out/lua
-      # rm init.lua
+      mkdir -p $out/lua
+      rm init.lua
     '';
 
     installPhase = ''
-      # cp -r lua $out/lua
-      # rm -r lua
+      if [ -d "lua" ]; then
+        cp -r lua $out/lua
+        rm -r lua
+      fi
       # Copy nvim/after only if it exists
       if [ -d "after" ]; then
           cp -r after $out/after
@@ -123,7 +125,39 @@ let
     ''
       vim.loader.enable()
       -- prepend lua directory
-      -- vim.opt.rtp:prepend('${nvimRtp}/lua')
+      vim.opt.rtp:prepend('${nvimRtp}/lua')
+
+      vim.g.mapleader = ","
+      vim.g.maplocalleader = ","
+      require("lazy").setup({
+        spec = {
+          { import = "plugins" },
+        },
+        performance = {
+          reset_packpath = false,
+          rtp = {
+            reset = false,
+            disabled_plugins = {
+              "gzip",
+              "tarPlugin",
+              "tohtml",
+              "tutor",
+              "zipPlugin",
+            },
+          }
+        },
+        dev = {
+          path = "${pkgs.vimUtils.packDir neovimConfig.packpathDirs}/pack/myNeovimPackages/start",
+          patterns = {""},
+        },
+        install = {
+          -- Safeguard in case we forget to install a plugin with Nix
+          missing = false,
+        },
+        rocks = {
+          enabled = false,
+        },
+      })
     ''
     # Wrap init.lua
     + (builtins.readFile ../nvim/init.lua)

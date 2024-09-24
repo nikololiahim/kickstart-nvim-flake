@@ -28,13 +28,13 @@ let
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix { inherit pkgs-wrapNeovim; };
 
-  all-plugins = with pkgs.vimPlugins; [ ];
+  all-plugins = with pkgs.vimPlugins; [
+    (mkNvimPlugin inputs.lazy-nvim "lazy.nvim")
+    (mkNvimPlugin inputs.which-key-nvim "which-key.nvim")
+  ];
 
   extraPackages = with pkgs; [ ];
-in
-{
-  # This is the neovim derivation
-  # returned by the overlay
+
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
@@ -43,9 +43,15 @@ in
     withNodeJs = false;
     withSqlite = false;
   };
+in
+{
+  # This is the neovim derivation
+  # returned by the overlay
+  nvim-pkg = nvim-pkg;
 
   # This can be symlinked in the devShell's shellHook
   nvim-luarc-json = final.mk-luarc-json {
+    nvim = nvim-pkg;
     plugins = all-plugins;
   };
 }
