@@ -7,22 +7,12 @@
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixfmt.url = "github:NixOS/nixfmt";
-    lazy-nvim = {
-      url = "github:folke/lazy.nvim";
-      flake = false;
-    };
-    which-key-nvim = {
-      url = "github:folke/which-key.nvim";
-      flake = false;
-    };
-    tokyonight-nvim = {
-      url = "github:folke/tokyonight.nvim";
-      flake = false;
-    };
-    nvim-treesitter = {
-      url = "github:nvim-treesitter/nvim-treesitter";
-      flake = false;
-    };
+    lazy-nvim = { url = "github:folke/lazy.nvim"; flake = false; };
+    which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
+    tokyonight-nvim = { url = "github:folke/tokyonight.nvim"; flake = false; };
+    nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
+    telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
+    plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
   };
 
   outputs =
