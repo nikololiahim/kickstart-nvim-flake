@@ -31,6 +31,11 @@ let
     nodejs
   ];
 
+  extraLuaPackages =
+    p: with p; [
+      jsregexp
+    ];
+
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
     inherit pkgs-wrapNeovim;
@@ -43,11 +48,17 @@ let
     (mkNvimPlugin inputs.nvim-treesitter "nvim-treesitter")
     (mkNvimPlugin inputs.telescope-nvim "telescope.nvim")
     (mkNvimPlugin inputs.plenary-nvim "plenary.nvim")
+    (mkNvimPlugin inputs.luasnip "LuaSnip")
+    (mkNvimPlugin inputs.nvim-cmp "nvim-cmp")
+    (mkNvimPlugin inputs.cmp-buffer "cmp-buffer")
+    (mkNvimPlugin inputs.cmp-path "cmp-path")
+    (mkNvimPlugin inputs.cmp-luasnip "cmp_luasnip")
   ];
 
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
+    inherit extraLuaPackages;
     withPython3 = false;
     withRuby = false;
     withNodeJs = false;
