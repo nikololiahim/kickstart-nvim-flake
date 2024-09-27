@@ -192,6 +192,22 @@
         "type": "github"
       }
     },
+    "flash-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721651134,
+        "narHash": "sha256-dM3hk/wutaRHMlGiKVQoXmgj7ycV/TCorfhdSNv4OBI=",
+        "owner": "folke",
+        "repo": "flash.nvim",
+        "rev": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "flash.nvim",
+        "type": "github"
+      }
+    },
     "gen-luarc": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -565,6 +581,7 @@
         "cmp-luasnip": "cmp-luasnip",
         "cmp-path": "cmp-path",
         "flake-utils": "flake-utils",
+        "flash-nvim": "flash-nvim",
         "gen-luarc": "gen-luarc",
         "lazy-nvim": "lazy-nvim",
         "luasnip": "luasnip",

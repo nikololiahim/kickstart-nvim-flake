@@ -53,6 +53,7 @@ let
     (mkNvimPlugin inputs.cmp-buffer "cmp-buffer")
     (mkNvimPlugin inputs.cmp-path "cmp-path")
     (mkNvimPlugin inputs.cmp-luasnip "cmp_luasnip")
+    (mkNvimPlugin inputs.flash-nvim "flash.nvim")
   ];
 
   nvim-pkg = mkNeovim {

@@ -20,6 +20,7 @@
     cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
     cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
     cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
+    flash-nvim = { url = "github:folke/flash.nvim"; flake = false; };
   };
 
   outputs =
