@@ -19,7 +19,7 @@ return {
         -- local rep = extras.rep
         local dl = extras.dynamic_lambda
         local fmt = require('luasnip.extras.fmt').fmt
-        local postfix = require("luasnip.extras.postfix").postfix
+        local postfix = require('luasnip.extras.postfix').postfix
 
         ls.add_snippets('nix', {
           s(

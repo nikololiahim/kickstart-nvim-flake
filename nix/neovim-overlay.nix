@@ -40,7 +40,7 @@ let
     inherit pkgs-wrapNeovim;
   };
 
-  all-plugins =  [
+  all-plugins = [
     (mkNvimPlugin inputs.lazy-nvim "lazy.nvim")
     (mkNvimPlugin inputs.which-key-nvim "which-key.nvim")
     (mkNvimPlugin inputs.tokyonight-nvim "tokyonight.nvim")
