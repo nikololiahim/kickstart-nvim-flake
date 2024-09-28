@@ -7,6 +7,7 @@
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixfmt.url = "github:NixOS/nixfmt";
+    nixd.url = "github:nix-community/nixd";
 
     # Plugins
     lazy-nvim = { url = "github:folke/lazy.nvim"; flake = false; };
@@ -21,11 +22,14 @@
     cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
     cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
     flash-nvim = { url = "github:folke/flash.nvim"; flake = false; };
+    dressing-nvim = { url = "github:stevearc/dressing.nvim"; flake = false; };
+    nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
+    cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
+    fidget-nvim = { url = "github:j-hui/fidget.nvim"; flake = false; };
   };
 
   outputs =
     inputs@{
-      self,
       nixpkgs,
       flake-utils,
       gen-luarc,
@@ -66,6 +70,7 @@
             nil
             stylua
             luajitPackages.luacheck
+            inputs.nixd.packages.${system}.default
             inputs.nixfmt.packages.${system}.default
           ];
           shellHook = ''

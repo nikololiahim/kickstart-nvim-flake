@@ -1,7 +1,6 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
 { inputs }:
 final: prev:
-with final.pkgs.lib;
 let
   pkgs = final;
 
@@ -41,7 +40,7 @@ let
     inherit pkgs-wrapNeovim;
   };
 
-  all-plugins = with pkgs.vimPlugins; [
+  all-plugins =  [
     (mkNvimPlugin inputs.lazy-nvim "lazy.nvim")
     (mkNvimPlugin inputs.which-key-nvim "which-key.nvim")
     (mkNvimPlugin inputs.tokyonight-nvim "tokyonight.nvim")
@@ -54,6 +53,10 @@ let
     (mkNvimPlugin inputs.cmp-path "cmp-path")
     (mkNvimPlugin inputs.cmp-luasnip "cmp_luasnip")
     (mkNvimPlugin inputs.flash-nvim "flash.nvim")
+    (mkNvimPlugin inputs.dressing-nvim "dressing.nvim")
+    (mkNvimPlugin inputs.nvim-lspconfig "nvim-lspconfig")
+    (mkNvimPlugin inputs.cmp-nvim-lsp "cmp-nvim-lsp")
+    (mkNvimPlugin inputs.fidget-nvim "fidget.nvim")
   ];
 
   nvim-pkg = mkNeovim {

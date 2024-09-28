@@ -127,8 +127,8 @@ let
       -- prepend lua directory
       vim.opt.rtp:prepend('${nvimRtp}/lua')
 
-      vim.g.mapleader = ","
-      vim.g.maplocalleader = ","
+      vim.g.mapleader = " "
+      vim.g.maplocalleader = " "
       require("lazy").setup({
         spec = {
           { import = "plugins" },
