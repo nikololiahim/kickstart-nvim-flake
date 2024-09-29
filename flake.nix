@@ -75,6 +75,10 @@
       url = "github:j-hui/fidget.nvim";
       flake = false;
     };
+    nvim-metals = {
+      url = "github:scalameta/nvim-metals";
+      flake = false;
+    };
   };
 
   outputs =

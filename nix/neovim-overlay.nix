@@ -57,12 +57,20 @@ let
     (mkNvimPlugin inputs.nvim-lspconfig "nvim-lspconfig")
     (mkNvimPlugin inputs.cmp-nvim-lsp "cmp-nvim-lsp")
     (mkNvimPlugin inputs.fidget-nvim "fidget.nvim")
+    (mkNvimPlugin inputs.nvim-metals "nvim-metals")
   ];
 
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
     inherit extraLuaPackages;
+    withScalaTooling = {
+      sbt = "${pkgs.sbt-with-scala-native}/bin/sbt";
+      javaHome = pkgs.jre_minimal;
+      metals = "${pkgs.metals.override { jre = pkgs.jre_minimal; }}/bin/metals";
+      scalafmt = "${pkgs.scalafmt.override { jre = pkgs.jre_minimal; }}/bin/scalafmt";
+      scala-cli = "${pkgs.scala-cli.override { jre = pkgs.jre_minimal; }}/bin/scala-cli";
+    };
     withPython3 = false;
     withRuby = false;
     withNodeJs = false;
