@@ -9,12 +9,14 @@ return {
     vim.opt.runtimepath:append(parser_install_dir)
 
     require('nvim-treesitter.configs').setup {
+      modules = {},
+      ignore_install = {},
       ensure_installed = {},
       parser_install_dir = parser_install_dir,
       auto_install = true,
       sync_install = false,
       highlight = { enable = true },
-      indent = { enable = true },
+      indent = { enable = true, additional_vim_regex_highlighting = false },
     }
   end,
 }
