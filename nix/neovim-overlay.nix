@@ -65,8 +65,8 @@ let
     inherit extraPackages;
     inherit extraLuaPackages;
     withScalaTooling = {
-      sbt = "${pkgs.sbt-with-scala-native}/bin/sbt";
       javaHome = pkgs.jre_minimal;
+      sbt = "${pkgs.sbt-with-scala-native}/bin/sbt";
       metals = "${pkgs.metals.override { jre = pkgs.jre_minimal; }}/bin/metals";
       scalafmt = "${pkgs.scalafmt.override { jre = pkgs.jre_minimal; }}/bin/scalafmt";
       scala-cli = "${pkgs.scala-cli.override { jre = pkgs.jre_minimal; }}/bin/scala-cli";
