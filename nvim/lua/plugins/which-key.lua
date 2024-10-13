@@ -11,7 +11,7 @@ return {
     {
       '<leader>?',
       function()
-        require('which-key').show { global = false }
+        require('which-key').show({ global = false })
       end,
       desc = 'Buffer Local Keymaps (which-key)',
     },
@@ -19,9 +19,9 @@ return {
 
   config = function()
     local wk = require('which-key')
-    wk.add {
+    wk.add({
       { '-', '<cmd>Ex<cr>', mode = 'n', desc = 'Open Netrw in the current directory' },
       { '<esc>', '<cmd>nohlsearch<cr>', mode = 'n', desc = 'Remove search highlights' },
-    }
+    })
   end,
 }

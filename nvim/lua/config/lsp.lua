@@ -70,7 +70,7 @@ M.keymaps = {
 
   all_diagnostics = merge(keymap(), {
     key = '<leader>D',
-    command = function ()
+    command = function()
       builtin.diagnostics({ bufnr = nil })
     end,
     desc = 'Show diagnostics in all buffers',
@@ -78,7 +78,9 @@ M.keymaps = {
 
   buffer_diagnostics = merge(keymap(), {
     key = '<leader>d',
-    command = function() builtin.diagnostics({ bufnr = 0 }) end,
+    command = function()
+      builtin.diagnostics({ bufnr = 0 })
+    end,
     desc = 'Show line diagnostics',
   }),
 

@@ -25,7 +25,7 @@ return {
       {
         '<leader>,',
         function()
-          builtin.buffers { sort_mru = true, sort_lastused = true }
+          builtin.buffers({ sort_mru = true, sort_lastused = true })
         end,
         desc = 'Switch buffer',
       },
@@ -33,14 +33,14 @@ return {
       {
         '<leader>/',
         function()
-          builtin.live_grep {
+          builtin.live_grep({
             layout_strategy = 'vertical',
             layout_config = {
               vertical = {
                 mirror = true,
               },
             },
-          }
+          })
         end,
         desc = 'Grep (Root Dir)',
       },
@@ -49,7 +49,7 @@ return {
       {
         '<leader>fb',
         function()
-          builtin.buffers { sort_mru = true, sort_lastused = true }
+          builtin.buffers({ sort_mru = true, sort_lastused = true })
         end,
         desc = 'Buffers',
       },
@@ -59,7 +59,7 @@ return {
       {
         '<leader>sh',
         function()
-          require('telescope.builtin').help_tags {
+          require('telescope.builtin').help_tags({
             attach_mappings = function(prompt_bufnr, _)
               local actions = require('telescope.actions')
               local action_state = require('telescope.actions.state')
@@ -72,7 +72,7 @@ return {
               -- false if not
               return true
             end,
-          }
+          })
         end,
         desc = 'Help Pages',
       },
