@@ -7,10 +7,20 @@ return {
   ft = { 'scala', 'sbt', 'java' },
   opts = function()
     local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+    local metals = require('metals')
     local capabilities = require('cmp_nvim_lsp').default_capabilities(default_capabilities)
-    local metals_config = require('metals').bare_config()
+    local metals_config = metals.bare_config()
+    local personal_lspconfig = require('config.lsp')
+    local metals_extended_keymaps = vim.tbl_deep_extend('force', personal_lspconfig.keymaps, {
+      lsp_restart = {
+        command = function()
+          vim.notify("Restarting Metals LSP server...", vim.log.levels.INFO)
+          metals.restart_metals()
+        end
+      }
+    })
     metals_config.capabilities = capabilities
-    metals_config.on_attach = require('config.lsp').on_attach
+    metals_config.on_attach = personal_lspconfig.on_attach(metals_extended_keymaps)
     metals_config.settings = {
       metalsBinaryPath = vim.g.NVIM_METALS_METALS_EXECUTABLE,
       sbtScript = vim.g.NVIM_METALS_SBT_EXECUTABLE,

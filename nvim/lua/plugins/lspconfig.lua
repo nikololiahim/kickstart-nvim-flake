@@ -7,8 +7,9 @@ return {
   config = function()
     local lspconfig = require('lspconfig')
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
+    local personal_lspconfig = require('config.lsp')
 
-    local on_attach = require('config.lsp').on_attach
+    local on_attach = personal_lspconfig.on_attach(personal_lspconfig.keymaps)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     lspconfig['nixd'].setup {
