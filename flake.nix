@@ -9,6 +9,8 @@
     nixfmt.url = "github:NixOS/nixfmt";
     nixd.url = "github:nix-community/nixd";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     # Plugins
     lazy-nvim = {
@@ -138,10 +140,12 @@
             lua-language-server
             nix-tree
             inputs.nixd.packages.${system}.default
+            self.checks.${system}.pre-commit-check.enabledPackages
           ];
           shellHook = ''
             # symlink the .luarc.json generated in the overlay
             ln -fs ${pkgs.nvim-luarc-json} .luarc.json
+            ${self.checks.${system}.pre-commit-check.shellHook}
           '';
         };
       in
@@ -150,6 +154,13 @@
         formatter = treefmtEval.config.build.wrapper;
 
         checks = {
+          pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              treefmt.enable = true;
+              treefmt.package = treefmtEval.config.build.wrapper;
+            };
+          };
           formatting = treefmtEval.config.build.check self;
         };
 
