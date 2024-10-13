@@ -68,16 +68,18 @@ M.keymaps = {
     desc = 'Smart rename'
   }),
 
-  buffer_diagnostics = merge(keymap(), {
+  all_diagnostics = merge(keymap(), {
     key = '<leader>D',
-    command = '<cmd>Telescope diagnostics bufnr=0<CR>',
-    desc = 'Show buffer diagnostics'
+    command = function ()
+      builtin.diagnostics({ bufnr = nil })
+    end,
+    desc = 'Show diagnostics in all buffers',
   }),
 
-  line_diagnostics = merge(keymap(), {
+  buffer_diagnostics = merge(keymap(), {
     key = '<leader>d',
-    command = vim.diagnostic.open_float,
-    desc = 'Show line diagnostics'
+    command = function() builtin.diagnostics({ bufnr = 0 }) end,
+    desc = 'Show line diagnostics',
   }),
 
   lsp_hover = merge(keymap(), {
