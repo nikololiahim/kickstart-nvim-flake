@@ -156,9 +156,10 @@
         checks = {
           pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
             src = ./.;
-            hooks = {
+            hooks = rec {
               treefmt.enable = true;
               treefmt.package = treefmtEval.config.build.wrapper;
+              treefmt.entry = "${treefmt.package}/bin/treefmt --ci";
             };
           };
           formatting = treefmtEval.config.build.check self;
