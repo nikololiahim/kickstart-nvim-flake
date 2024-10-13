@@ -28,44 +28,44 @@ M.keymaps = {
   lsp_references = merge(keymap(), {
     key = 'gR',
     command = builtin.lsp_references,
-    desc = 'Show LSP references'
+    desc = 'Show LSP references',
   }),
 
   go_to_declaration = merge(keymap(), {
     key = 'gD',
     command = vim.lsp.buf.declaration,
-    desc = 'Go to declaration'
+    desc = 'Go to declaration',
   }),
 
   lsp_definitions = merge(keymap(), {
     key = 'gd',
     command = builtin.lsp_definitions,
-    desc = 'Show LSP definitions'
+    desc = 'Show LSP definitions',
   }),
 
   lsp_implementations = merge(keymap(), {
     key = 'gi',
     command = builtin.lsp_implementations,
-    desc = 'Show LSP implementations'
+    desc = 'Show LSP implementations',
   }),
 
   lsp_type_definitions = merge(keymap(), {
     key = 'gt',
     command = builtin.lsp_type_definitions,
-    desc = 'Show LSP type definitions'
+    desc = 'Show LSP type definitions',
   }),
 
   code_actions = merge(keymap(), {
     mode = { 'n', 'v' },
     key = '<leader>ca',
     command = vim.lsp.buf.code_action,
-    desc = 'Show available code actions'
+    desc = 'Show available code actions',
   }),
 
   smart_rename = merge(keymap(), {
     key = '<leader>rn',
     command = vim.lsp.buf.rename,
-    desc = 'Smart rename'
+    desc = 'Smart rename',
   }),
 
   all_diagnostics = merge(keymap(), {
@@ -97,7 +97,7 @@ M.keymaps = {
   previous_diagnostic = merge(keymap(), {
     key = '[d',
     command = function()
-      vim.diagnostic.jump { count = -1 }
+      vim.diagnostic.jump({ count = -1 })
     end,
     desc = 'Go to previous diagnostic',
   }),
@@ -105,7 +105,7 @@ M.keymaps = {
   next_diagnostic = merge(keymap(), {
     key = ']d',
     command = function()
-      vim.diagnostic.jump { count = 1 }
+      vim.diagnostic.jump({ count = 1 })
     end,
     desc = 'Go to next diagnostic',
   }),

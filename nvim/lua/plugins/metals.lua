@@ -14,10 +14,10 @@ return {
     local metals_extended_keymaps = vim.tbl_deep_extend('force', personal_lspconfig.keymaps, {
       lsp_restart = {
         command = function()
-          vim.notify("Restarting Metals LSP server...", vim.log.levels.INFO)
+          vim.notify('Restarting Metals LSP server...', vim.log.levels.INFO)
           metals.restart_metals()
-        end
-      }
+        end,
+      },
     })
     metals_config.capabilities = capabilities
     metals_config.on_attach = personal_lspconfig.on_attach(metals_extended_keymaps)
