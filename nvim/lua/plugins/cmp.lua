@@ -17,7 +17,7 @@ return {
         local extras = require('luasnip.extras')
         local l = extras.lambda
         -- local rep = extras.rep
-        local dl = extras.dynamic_lambda
+        -- local dl = extras.dynamic_lambda
         local fmt = require('luasnip.extras.fmt').fmt
         local postfix = require('luasnip.extras.postfix').postfix
 
