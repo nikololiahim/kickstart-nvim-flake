@@ -480,6 +480,22 @@
         "type": "github"
       }
     },
+    "lazygit-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727783116,
+        "narHash": "sha256-djAY6VwCLcIEHLyQX0KHOppZXIIn92AYduA1KBnbVkY=",
+        "owner": "kdheepak",
+        "repo": "lazygit.nvim",
+        "rev": "56760339a81cd1540d5a72fd9d93010a2677b55d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kdheepak",
+        "repo": "lazygit.nvim",
+        "type": "github"
+      }
+    },
     "luasnip": {
       "flake": false,
       "locked": {
@@ -863,6 +879,7 @@
         "flash-nvim": "flash-nvim",
         "gen-luarc": "gen-luarc",
         "lazy-nvim": "lazy-nvim",
+        "lazygit-nvim": "lazygit-nvim",
         "luasnip": "luasnip",
         "mini-files": "mini-files",
         "neovim-nightly-overlay": "neovim-nightly-overlay",

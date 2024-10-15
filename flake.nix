@@ -85,6 +85,10 @@
       url = "github:echasnovski/mini.files";
       flake = false;
     };
+    lazygit-nvim = {
+      url = "github:kdheepak/lazygit.nvim";
+      flake = false;
+    };
   };
 
   outputs =
