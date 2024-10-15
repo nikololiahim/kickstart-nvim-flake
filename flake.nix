@@ -81,6 +81,10 @@
       url = "github:scalameta/nvim-metals";
       flake = false;
     };
+    mini-files = {
+      url = "github:echasnovski/mini.files";
+      flake = false;
+    };
   };
 
   outputs =

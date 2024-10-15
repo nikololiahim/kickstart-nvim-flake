@@ -58,6 +58,7 @@ let
     (mkNvimPlugin inputs.cmp-nvim-lsp "cmp-nvim-lsp")
     (mkNvimPlugin inputs.fidget-nvim "fidget.nvim")
     (mkNvimPlugin inputs.nvim-metals "nvim-metals")
+    (mkNvimPlugin inputs.mini-files "mini.files")
   ];
 
   nvim-pkg = mkNeovim {

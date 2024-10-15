@@ -512,6 +512,22 @@
         "type": "github"
       }
     },
+    "mini-files": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1729012180,
+        "narHash": "sha256-7aYMBby7nDLIafOuFjM7uCjwsCt5lODxdNEzHY+1P7c=",
+        "owner": "echasnovski",
+        "repo": "mini.files",
+        "rev": "6abe854f1410fc6aec69897a78b1db994c32d9c6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "echasnovski",
+        "repo": "mini.files",
+        "type": "github"
+      }
+    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -848,6 +864,7 @@
         "gen-luarc": "gen-luarc",
         "lazy-nvim": "lazy-nvim",
         "luasnip": "luasnip",
+        "mini-files": "mini-files",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixd": "nixd",
         "nixfmt": "nixfmt",
