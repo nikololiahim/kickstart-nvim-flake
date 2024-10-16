@@ -8,9 +8,6 @@
 }:
 with lib;
 {
-  # NVIM_APPNAME - Defaults to 'nvim' if not set.
-  # If set to something else, this will also rename the binary.
-  appName ? null,
   # The Neovim package to wrap
   neovim-unwrapped ? pkgs-wrapNeovim.neovim-unwrapped,
   plugins ? [ ], # List of plugins
@@ -30,42 +27,22 @@ with lib;
   withPython3 ? true, # Build Neovim with Python 3 support?
   withRuby ? true, # Build Neovim with Ruby support?
   withNodeJs ? true, # Build Neovim with NodeJS support?
-  withSqlite ? true, # Add sqlite? This is a dependency for some plugins
-  # You probably don't want to create vi or vim aliases
-  # if the appName is something different than "nvim"
-  viAlias ? appName == "nvim", # Add a "vi" binary to the build output as an alias?
-  vimAlias ? appName == "nvim", # Add a "vim" binary to the build output as an alias?
 }:
 let
-  # This is the structure of a plugin definition.
-  # Each plugin in the `plugins` argument list can also be defined as this attrset
-  defaultPlugin = {
-    plugin = null; # e.g. nvim-lspconfig
-    config = null; # plugin config
-    # If `optional` is set to `false`, the plugin is installed in the 'start' packpath
-    # set to `true`, it is installed in the 'opt' packpath, and can be lazy loaded with
-    # ':packadd! {plugin-name}
-    optional = false;
-    runtime = { };
-  };
-
-  externalPackages = extraPackages ++ (optionals withSqlite [ pkgs.sqlite ]);
-
-  # Map all plugins to an attrset { plugin = <plugin>; config = <config>; optional = <tf>; ... }
-  normalizedPlugins = map (x: defaultPlugin // (if x ? plugin then x else { plugin = x; })) plugins;
+  normalizedPlugins = pkgs-wrapNeovim.neovimUtils.normalizePlugins plugins;
+  externalPackages = extraPackages;
 
   # This nixpkgs util function creates an attrset
   # that pkgs.wrapNeovimUnstable uses to configure the Neovim build.
   neovimConfig = pkgs-wrapNeovim.neovimUtils.makeNeovimConfig {
     inherit
+      extraLuaPackages
       extraPython3Packages
       withPython3
       withRuby
       withNodeJs
-      viAlias
-      vimAlias
+      plugins
       ;
-    plugins = normalizedPlugins;
   };
 
   # This uses the ignoreConfigRegexes list to filter
@@ -155,7 +132,11 @@ let
           }
         },
         dev = {
-          path = "${pkgs.vimUtils.packDir neovimConfig.packpathDirs}/pack/myNeovimPackages/start",
+          path = "${
+            pkgs.neovimUtils.packDir {
+              myNeovimPackages = (pkgs.neovimUtils.normalizedPluginsToVimPackage normalizedPlugins);
+            }
+          }/pack/myNeovimPackages/start",
           patterns = {""},
         },
         install = {
@@ -196,18 +177,10 @@ let
     '';
 
   # Add arguments to the Neovim wrapper script
-  extraMakeWrapperArgs = builtins.concatStringsSep " " (
-    # Set the NVIM_APPNAME environment variable
-    (optional (
-      appName != "nvim" && appName != null && appName != ""
-    ) ''--set NVIM_APPNAME "${appName}"'')
-    # Add external packages to the PATH
-    ++ (optional (externalPackages != [ ]) ''--prefix PATH : "${makeBinPath externalPackages}"'')
-    # Set the LIBSQLITE_CLIB_PATH if sqlite is enabled
-    ++ (optional withSqlite ''--set LIBSQLITE_CLIB_PATH "${pkgs.sqlite.out}/lib/libsqlite3.so"'')
-    # Set the LIBSQLITE environment variable if sqlite is enabled
-    ++ (optional withSqlite ''--set LIBSQLITE "${pkgs.sqlite.out}/lib/libsqlite3.so"'')
-  );
+  extraMakeWrapperArgs =
+    builtins.concatStringsSep " "
+      # Add external packages to the PATH
+      (optional (externalPackages != [ ]) ''--prefix PATH : "${makeBinPath externalPackages}"'');
 
   luaPackages = neovim-unwrapped.lua.pkgs;
   resolvedExtraLuaPackages = extraLuaPackages luaPackages;
@@ -243,13 +216,5 @@ let
     }
   );
 
-  isCustomAppName = appName != null && appName != "nvim";
 in
-neovim-wrapped.overrideAttrs (oa: {
-  buildPhase =
-    oa.buildPhase
-    # If a custom NVIM_APPNAME has been set, rename the `nvim` binary
-    + lib.optionalString isCustomAppName ''
-      mv $out/bin/nvim $out/bin/${lib.escapeShellArg appName}
-    '';
-})
+neovim-wrapped

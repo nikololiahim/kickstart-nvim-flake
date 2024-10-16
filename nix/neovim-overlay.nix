@@ -76,7 +76,6 @@ let
     withPython3 = false;
     withRuby = false;
     withNodeJs = false;
-    withSqlite = false;
   };
 in
 {
