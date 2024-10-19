@@ -20,7 +20,6 @@ return {
   config = function()
     local wk = require('which-key')
     wk.add({
-      { '-', '<cmd>Ex<cr>', mode = 'n', desc = 'Open Netrw in the current directory' },
       { '<esc>', '<cmd>nohlsearch<cr>', mode = 'n', desc = 'Remove search highlights' },
     })
   end,
