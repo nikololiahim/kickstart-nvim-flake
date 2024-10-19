@@ -25,6 +25,9 @@ let
   };
 
   extraPackages = with pkgs; [
+    lazygit
+    fd
+    ripgrep
     gcc
     tree-sitter
     nodejs
