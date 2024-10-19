@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "conform-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1729039923,
+        "narHash": "sha256-X+9+X31AmJqYWQv2QxX5AEovHwGV/K2q6A0RtiIZGGk=",
+        "owner": "stevearc",
+        "repo": "conform.nvim",
+        "rev": "f5bd8419f8a29451e20bdb1061a54fe13d5c8de3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stevearc",
+        "repo": "conform.nvim",
+        "type": "github"
+      }
+    },
     "dressing-nvim": {
       "flake": false,
       "locked": {
@@ -873,6 +889,7 @@
         "cmp-luasnip": "cmp-luasnip",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "cmp-path": "cmp-path",
+        "conform-nvim": "conform-nvim",
         "dressing-nvim": "dressing-nvim",
         "fidget-nvim": "fidget-nvim",
         "flake-utils": "flake-utils",

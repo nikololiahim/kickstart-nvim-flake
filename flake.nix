@@ -89,6 +89,10 @@
       url = "github:kdheepak/lazygit.nvim";
       flake = false;
     };
+    conform-nvim = {
+      url = "github:stevearc/conform.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -147,8 +151,10 @@
             # Tools for Lua and Nix development, useful for editing files in this repo
             lua-language-server
             nix-tree
+            stylua
             inputs.nixd.packages.${system}.default
             self.checks.${system}.pre-commit-check.enabledPackages
+            inputs.nixfmt.packages.${system}.default
           ];
           shellHook = ''
             # symlink the .luarc.json generated in the overlay
