@@ -544,19 +544,19 @@
         "type": "github"
       }
     },
-    "mini-files": {
+    "mini-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1729012180,
-        "narHash": "sha256-7aYMBby7nDLIafOuFjM7uCjwsCt5lODxdNEzHY+1P7c=",
+        "lastModified": 1729952635,
+        "narHash": "sha256-1FjoegYDYH6J2I6Pkpfa5EuX2oHw2D8Zb+sACZz4UkE=",
         "owner": "echasnovski",
-        "repo": "mini.files",
-        "rev": "6abe854f1410fc6aec69897a78b1db994c32d9c6",
+        "repo": "mini.nvim",
+        "rev": "919b953f044d97a2243cc2d1f0b316a199434127",
         "type": "github"
       },
       "original": {
         "owner": "echasnovski",
-        "repo": "mini.files",
+        "repo": "mini.nvim",
         "type": "github"
       }
     },
@@ -898,7 +898,7 @@
         "lazy-nvim": "lazy-nvim",
         "lazygit-nvim": "lazygit-nvim",
         "luasnip": "luasnip",
-        "mini-files": "mini-files",
+        "mini-nvim": "mini-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixd": "nixd",
         "nixfmt": "nixfmt",

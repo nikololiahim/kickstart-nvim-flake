@@ -81,8 +81,8 @@
       url = "github:scalameta/nvim-metals";
       flake = false;
     };
-    mini-files = {
-      url = "github:echasnovski/mini.files";
+    mini-nvim = {
+      url = "github:echasnovski/mini.nvim";
       flake = false;
     };
     lazygit-nvim = {

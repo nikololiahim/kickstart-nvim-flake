@@ -61,7 +61,7 @@ let
     (mkNvimPlugin inputs.cmp-nvim-lsp "cmp-nvim-lsp")
     (mkNvimPlugin inputs.fidget-nvim "fidget.nvim")
     (mkNvimPlugin inputs.nvim-metals "nvim-metals")
-    (mkNvimPlugin inputs.mini-files "mini.files")
+    (mkNvimPlugin inputs.mini-nvim "mini.nvim")
     (mkNvimPlugin inputs.lazygit-nvim "lazygit.nvim")
     (mkNvimPlugin inputs.conform-nvim "conform.nvim")
   ];
