@@ -1,19 +1,40 @@
 return {
   'echasnovski/mini.files',
-  opts = {
-    mappings = {
-      go_in_plus = '<CR>',
-      go_out_plus = '-',
-    },
-    windows = {
-      preview = true,
-      width_focus = 30,
-      width_preview = 90,
-    },
-    options = {
-      use_as_default_explorer = false,
-    },
-  },
+  opts = function()
+    local max_width = vim.o.columns
+    local small_width = math.floor(max_width / 4)
+    local large_width = max_width - small_width * 2 - 6
+    return {
+      mappings = {
+        go_in_plus = '<CR>',
+        go_out_plus = '-',
+      },
+      windows = {
+        preview = true,
+        width_focus = small_width,
+        width_nofocus = small_width,
+        width_preview = large_width,
+        max_number = 3,
+      },
+      options = {
+        use_as_default_explorer = false,
+      },
+    }
+  end,
+  init = function()
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'MiniFilesWindowUpdate',
+      callback = function(args)
+        local win_id = args.data.win_id
+        local max_lines = vim.o.lines
+        local config = vim.api.nvim_win_get_config(win_id)
+        config.height = max_lines - 3
+        config.border = 'double'
+        config.title_pos = 'left'
+        vim.api.nvim_win_set_config(win_id, config)
+      end,
+    })
+  end,
   keys = function()
     local files = require('mini.files')
     return {
