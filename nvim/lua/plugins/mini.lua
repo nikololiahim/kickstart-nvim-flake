@@ -31,6 +31,11 @@ return {
     local small_width = math.floor(max_width / 4)
     local large_width = max_width - small_width * 2 - 6
 
+    -- ================== mini.icons ==================
+    require('mini.icons').setup({})
+    -- ================== mini.icons ==================
+
+    -- ================== mini.files ==================
     require('mini.files').setup({
 
       mappings = {
@@ -50,5 +55,6 @@ return {
         use_as_default_explorer = true,
       },
     })
+    -- ================== mini.files ==================
   end,
 }
