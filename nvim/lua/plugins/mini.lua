@@ -35,6 +35,10 @@ return {
     require('mini.icons').setup({})
     -- ================== mini.icons ==================
 
+    -- ================== mini.pairs ==================
+    require('mini.pairs').setup({})
+    -- ================== mini.pairs ==================
+
     -- ================== mini.files ==================
     require('mini.files').setup({
 
