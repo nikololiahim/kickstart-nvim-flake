@@ -16,6 +16,8 @@ return {
     })
 
     local files = require('mini.files')
+    local pick = require('mini.pick')
+    local extras = require('mini.extra')
 
     vim.keymap.set('n', '-', function()
       files.open(vim.api.nvim_buf_get_name(0), true)
@@ -24,6 +26,37 @@ return {
     vim.keymap.set('n', '<leader>fm', function()
       files.open(vim.uv.cwd(), true)
     end, { desc = 'Open mini.files (cwd)', silent = true, noremap = true })
+
+    -- ================== mini.pick ==================
+
+    vim.keymap.set('n', '<leader>/', function()
+      pick.builtin.grep_live()
+    end, { desc = 'Grep (Root Dir)', silent = true, noremap = true })
+
+    vim.keymap.set('n', '<leader><space>', function()
+      pick.builtin.files()
+    end, { desc = 'Find Files (Root Dir)', silent = true, noremap = true })
+
+    vim.keymap.set('n', '<leader>sh', function()
+      pick.builtin.help()
+    end, { desc = 'Help Pages', silent = true, noremap = true })
+
+    vim.keymap.set('n', '<leader>,', function()
+      pick.builtin.buffers({ include_current = false })
+    end, { desc = 'Switch Buffer', silent = true, noremap = true })
+
+    vim.keymap.set('n', '<leader>:', function()
+      extras.pickers.history({ scope = ':' })
+    end, { desc = 'Command History', silent = true, noremap = true })
+
+    vim.keymap.set('n', '<leader>sj', function()
+      extras.pickers.list({ scope = 'jump' })
+    end, { desc = 'Jumplist', silent = true, noremap = true })
+
+    vim.keymap.set('n', '<leader>sl', function()
+      extras.pickers.list({ scope = 'location' })
+    end, { desc = 'Location List', silent = true, noremap = true })
+    -- ================== mini.pick ==================
   end,
 
   config = function()
@@ -50,6 +83,30 @@ return {
     -- ================== mini.pairs ==================
     require('mini.pairs').setup()
     -- ================== mini.pairs ==================
+
+    -- ================== mini.pick ==================
+
+    local win_config = function()
+      local height = math.floor(0.618 * vim.o.lines)
+      local width = math.floor(0.618 * vim.o.columns)
+      return {
+        anchor = 'NW',
+        height = height,
+        width = width,
+        row = math.floor(0.5 * (vim.o.lines - height)),
+        col = math.floor(0.5 * (vim.o.columns - width)),
+      }
+    end
+    require('mini.pick').setup({
+      window = {
+        config = win_config,
+      },
+    })
+    -- ================== mini.pick ==================
+
+    -- ================== mini.extra ==================
+    require('mini.extra').setup()
+    -- ================== mini.extra ==================
 
     -- ================== mini.files ==================
     require('mini.files').setup({

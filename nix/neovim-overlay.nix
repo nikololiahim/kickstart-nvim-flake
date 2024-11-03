@@ -48,7 +48,6 @@ let
     (mkNvimPlugin inputs.which-key-nvim "which-key.nvim")
     (mkNvimPlugin inputs.tokyonight-nvim "tokyonight.nvim")
     (mkNvimPlugin inputs.nvim-treesitter "nvim-treesitter")
-    (mkNvimPlugin inputs.telescope-nvim "telescope.nvim")
     (mkNvimPlugin inputs.plenary-nvim "plenary.nvim")
     (mkNvimPlugin inputs.luasnip "LuaSnip")
     (mkNvimPlugin inputs.nvim-cmp "nvim-cmp")

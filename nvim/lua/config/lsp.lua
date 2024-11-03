@@ -22,36 +22,46 @@ local function merge(tbl1, tbl2)
   return vim.tbl_deep_extend('force', tbl1, tbl2)
 end
 
-local builtin = require('telescope.builtin')
+local pick = require('mini.extra').pickers
 
 M.keymaps = {
   lsp_references = merge(keymap(), {
     key = 'gR',
-    command = builtin.lsp_references,
+    command = function()
+      pick.lsp({ scope = 'references' })
+    end,
     desc = 'Show LSP references',
   }),
 
   go_to_declaration = merge(keymap(), {
     key = 'gD',
-    command = vim.lsp.buf.declaration,
+    command = function()
+      pick.lsp({ scope = 'declaration' })
+    end,
     desc = 'Go to declaration',
   }),
 
   lsp_definitions = merge(keymap(), {
     key = 'gd',
-    command = builtin.lsp_definitions,
+    command = function()
+      pick.lsp({ scope = 'definition' })
+    end,
     desc = 'Show LSP definitions',
   }),
 
   lsp_implementations = merge(keymap(), {
     key = 'gi',
-    command = builtin.lsp_implementations,
+    command = function()
+      pick.lsp({ scope = 'implementation' })
+    end,
     desc = 'Show LSP implementations',
   }),
 
   lsp_type_definitions = merge(keymap(), {
     key = 'gt',
-    command = builtin.lsp_type_definitions,
+    command = function()
+      pick.lsp({ scope = 'type_definition' })
+    end,
     desc = 'Show LSP type definitions',
   }),
 
@@ -71,7 +81,7 @@ M.keymaps = {
   all_diagnostics = merge(keymap(), {
     key = '<leader>D',
     command = function()
-      builtin.diagnostics({ bufnr = nil })
+      pick.diagnostic({ scope = 'all' })
     end,
     desc = 'Show diagnostics in all buffers',
   }),
@@ -79,7 +89,7 @@ M.keymaps = {
   buffer_diagnostics = merge(keymap(), {
     key = '<leader>d',
     command = function()
-      builtin.diagnostics({ bufnr = 0 })
+      pick.diagnostic({ scope = 'current' })
     end,
     desc = 'Show line diagnostics',
   }),

@@ -29,10 +29,6 @@
       url = "github:nvim-treesitter/nvim-treesitter";
       flake = false;
     };
-    telescope-nvim = {
-      url = "github:nvim-telescope/telescope.nvim";
-      flake = false;
-    };
     plenary-nvim = {
       url = "github:nvim-lua/plenary.nvim";
       flake = false;
