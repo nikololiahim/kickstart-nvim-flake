@@ -16,10 +16,27 @@ return {
         local sn = ls.snippet_node
         local extras = require('luasnip.extras')
         local l = extras.lambda
-        -- local rep = extras.rep
+        local rep = extras.rep
         -- local dl = extras.dynamic_lambda
         local fmt = require('luasnip.extras.fmt').fmt
         local postfix = require('luasnip.extras.postfix').postfix
+
+        ls.add_snippets('lua', {
+          s(
+            'mini',
+            fmt(
+              [[
+                -- ================== mini.{rep} ==================
+                require('mini.{name}').setup()
+                -- ================== mini.{rep} ==================
+              ]],
+              {
+                name = i(1),
+                rep = rep(1),
+              }
+            )
+          ),
+        })
 
         ls.add_snippets('nix', {
           s(

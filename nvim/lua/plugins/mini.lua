@@ -32,11 +32,23 @@ return {
     local large_width = max_width - small_width * 2 - 6
 
     -- ================== mini.icons ==================
-    require('mini.icons').setup({})
+    require('mini.icons').setup()
     -- ================== mini.icons ==================
 
+    -- ================== mini.git ==================
+    require('mini.git').setup()
+    -- ================== mini.git ==================
+
+    -- ================== mini.diff ==================
+    require('mini.diff').setup()
+    -- ================== mini.diff ==================
+
+    -- ================== mini.statusline ==================
+    require('mini.statusline').setup()
+    -- ================== mini.statusline ==================
+
     -- ================== mini.pairs ==================
-    require('mini.pairs').setup({})
+    require('mini.pairs').setup()
     -- ================== mini.pairs ==================
 
     -- ================== mini.files ==================

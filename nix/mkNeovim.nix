@@ -128,6 +128,7 @@ let
               "tohtml",
               "tutor",
               "zipPlugin",
+              "netrw",
             },
           }
         },
