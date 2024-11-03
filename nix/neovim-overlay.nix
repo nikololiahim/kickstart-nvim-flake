@@ -64,6 +64,7 @@ let
     (mkNvimPlugin inputs.mini-nvim "mini.nvim")
     (mkNvimPlugin inputs.lazygit-nvim "lazygit.nvim")
     (mkNvimPlugin inputs.conform-nvim "conform.nvim")
+    (mkNvimPlugin inputs.nvim-colorizer-lua "nvim-colorizer.lua")
   ];
 
   nvim-pkg = mkNeovim {

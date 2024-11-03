@@ -796,6 +796,22 @@
         "type": "github"
       }
     },
+    "nvim-colorizer-lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1730594975,
+        "narHash": "sha256-QvsO+ffKEgelBTNw5qly0d2ph5wEmRvM+vu2+ZieETU=",
+        "owner": "NvChad",
+        "repo": "nvim-colorizer.lua",
+        "rev": "19477946096b7800ca215bc813c0f021ae98c46c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NvChad",
+        "repo": "nvim-colorizer.lua",
+        "type": "github"
+      }
+    },
     "nvim-lspconfig": {
       "flake": false,
       "locked": {
@@ -904,6 +920,7 @@
         "nixfmt": "nixfmt",
         "nixpkgs": "nixpkgs_4",
         "nvim-cmp": "nvim-cmp",
+        "nvim-colorizer-lua": "nvim-colorizer-lua",
         "nvim-lspconfig": "nvim-lspconfig",
         "nvim-metals": "nvim-metals",
         "nvim-treesitter": "nvim-treesitter",

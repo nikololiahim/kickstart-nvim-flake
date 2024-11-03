@@ -93,6 +93,10 @@
       url = "github:stevearc/conform.nvim";
       flake = false;
     };
+    nvim-colorizer-lua = {
+      url = "github:NvChad/nvim-colorizer.lua";
+      flake = false;
+    };
   };
 
   outputs =
