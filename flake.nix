@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay/flake-update";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixfmt.url = "github:NixOS/nixfmt";
     nixd.url = "github:nix-community/nixd";
     treefmt-nix.url = "github:numtide/treefmt-nix";
