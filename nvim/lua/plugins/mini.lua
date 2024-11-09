@@ -18,7 +18,9 @@ return {
     local files = require('mini.files')
     local pick = require('mini.pick')
     local extras = require('mini.extra')
+    local diff = require('mini.diff')
 
+    -- ================== mini.files ==================
     vim.keymap.set('n', '-', function()
       files.open(vim.api.nvim_buf_get_name(0), true)
     end, { noremap = false, silent = true, desc = 'Open mini.files (Directory of Current File)' })
@@ -26,6 +28,7 @@ return {
     vim.keymap.set('n', '<leader>fm', function()
       files.open(vim.uv.cwd(), true)
     end, { desc = 'Open mini.files (cwd)', silent = true, noremap = true })
+    -- ================== mini.files ==================
 
     -- ================== mini.pick ==================
 
@@ -57,6 +60,20 @@ return {
       extras.pickers.list({ scope = 'location' })
     end, { desc = 'Location List', silent = true, noremap = true })
     -- ================== mini.pick ==================
+
+    -- ================== mini.diff ==================
+    vim.keymap.set('n', 'ghh', function()
+      diff.toggle_overlay(0)
+    end, { desc = 'Toggle hunk diff overlay', silent = true, noremap = true })
+
+    vim.keymap.set('n', 'gha', function()
+      return MiniDiff.operator('apply') .. 'gh'
+    end, { desc = 'Undo git hunk', silent = true, expr = true, remap = true })
+
+    vim.keymap.set('n', 'ghu', function()
+      return MiniDiff.operator('reset') .. 'gh'
+    end, { desc = 'Undo git hunk', silent = true, expr = true, remap = true })
+    -- ================== mini.diff ==================
   end,
 
   config = function()
