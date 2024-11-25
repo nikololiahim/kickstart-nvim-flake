@@ -1,6 +1,6 @@
 return {
   'NvChad/nvim-colorizer.lua',
-  ft = { 'nix' },
+  ft = { 'nix', 'conf' },
   cmd = {
     'ColorizerAttachToBuffer',
     'ColorizerDetachFromBuffer',
@@ -10,6 +10,10 @@ return {
   opts = {
     filetypes = {
       nix = {
+        css = true,
+        css_fn = true,
+      },
+      conf = {
         css = true,
         css_fn = true,
       },
