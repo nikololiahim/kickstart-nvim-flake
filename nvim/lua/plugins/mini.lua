@@ -68,7 +68,7 @@ return {
 
     vim.keymap.set('n', 'gha', function()
       return MiniDiff.operator('apply') .. 'gh'
-    end, { desc = 'Undo git hunk', silent = true, expr = true, remap = true })
+    end, { desc = 'Add git hunk', silent = true, expr = true, remap = true })
 
     vim.keymap.set('n', 'ghu', function()
       return MiniDiff.operator('reset') .. 'gh'
