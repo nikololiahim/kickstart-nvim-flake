@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixfmt.url = "github:NixOS/nixfmt";
     nixd.url = "github:nix-community/nixd";
@@ -93,6 +92,10 @@
       url = "github:NvChad/nvim-colorizer.lua";
       flake = false;
     };
+    lazydev-nvim = {
+      url = "github:folke/lazydev.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -100,7 +103,6 @@
       self,
       nixpkgs,
       flake-utils,
-      gen-luarc,
       ...
     }:
     let
@@ -123,10 +125,6 @@
           overlays = [
             # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
             neovim-overlay
-            # This adds a function can be used to generate a .luarc.json
-            # containing the Neovim API all plugins in the workspace directory.
-            # The generated file can be symlinked in the devShell's shellHook.
-            gen-luarc.overlays.default
           ];
         };
 
@@ -157,8 +155,6 @@
             inputs.nixfmt.packages.${system}.default
           ];
           shellHook = ''
-            # symlink the .luarc.json generated in the overlay
-            ln -fs ${pkgs.nvim-luarc-json} .luarc.json
             ${self.checks.${system}.pre-commit-check.shellHook}
           '';
         };

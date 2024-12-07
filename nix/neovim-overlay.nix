@@ -64,6 +64,7 @@ let
     (mkNvimPlugin inputs.lazygit-nvim "lazygit.nvim")
     (mkNvimPlugin inputs.conform-nvim "conform.nvim")
     (mkNvimPlugin inputs.nvim-colorizer-lua "nvim-colorizer.lua")
+    (mkNvimPlugin inputs.lazydev-nvim "lazydev.nvim")
   ];
 
   nvim-pkg = mkNeovim {
@@ -86,10 +87,4 @@ in
   # This is the neovim derivation
   # returned by the overlay
   nvim-pkg = nvim-pkg;
-
-  # This can be symlinked in the devShell's shellHook
-  nvim-luarc-json = final.mk-luarc-json {
-    nvim = nvim-pkg;
-    plugins = all-plugins;
-  };
 }
