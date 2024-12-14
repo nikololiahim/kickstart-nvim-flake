@@ -11,6 +11,8 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.showmode = false
 vim.opt.splitright = true
+vim.opt.swapfile = false
+vim.opt.undofile = true
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'help',
