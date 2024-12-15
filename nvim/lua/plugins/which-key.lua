@@ -16,11 +16,4 @@ return {
       desc = 'Buffer Local Keymaps (which-key)',
     },
   },
-
-  config = function()
-    local wk = require('which-key')
-    wk.add({
-      { '<esc>', '<cmd>nohlsearch<cr>', mode = 'n', desc = 'Remove search highlights' },
-    })
-  end,
 }
