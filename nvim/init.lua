@@ -15,10 +15,16 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 
 vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'lua',
+  callback = function(event)
+    vim.keymap.set('n', '<space>x', ':.lua<CR>', { buffer = event.buf })
+    vim.keymap.set('v', '<space>x', ':lua<CR>', { buffer = event.buf })
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
   pattern = 'help',
   callback = function(event)
-    vim.keymap.set('n', '<esc>', function()
-      vim.cmd.helpclose()
-    end, { buffer = event.buf })
+    vim.keymap.set('n', '<esc>', vim.cmd.helpclose, { buffer = event.buf })
   end,
 })
