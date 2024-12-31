@@ -5,8 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    nixfmt.url = "github:NixOS/nixfmt";
-    nixd.url = "github:nix-community/nixd";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
@@ -134,7 +132,7 @@
             projectRootFile = "flake.nix";
             programs.nixfmt = {
               enable = true;
-              package = inputs.nixfmt.packages.${system}.default;
+              package = pkgs.nixfmt-rfc-style;
             };
             programs.stylua = {
               enable = true;
@@ -150,9 +148,9 @@
             lua-language-server
             nix-tree
             stylua
-            inputs.nixd.packages.${system}.default
+            nixd
+            nixfmt-rfc-style
             self.checks.${system}.pre-commit-check.enabledPackages
-            inputs.nixfmt.packages.${system}.default
           ];
           shellHook = ''
             ${self.checks.${system}.pre-commit-check.shellHook}
