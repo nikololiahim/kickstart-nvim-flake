@@ -66,7 +66,7 @@ return {
         })
       end,
     },
-    'saadparwaiz1/cmp_luasnip',
+    -- 'saadparwaiz1/cmp_luasnip',
   },
   opts = function(_, opts)
     opts.sources = opts.sources or {}
@@ -109,7 +109,7 @@ return {
       }),
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        -- { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' },
       }),
