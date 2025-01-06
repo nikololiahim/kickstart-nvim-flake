@@ -20,6 +20,10 @@ return {
     local extras = require('mini.extra')
     local diff = require('mini.diff')
 
+    -- ================== mini.basics ==================
+    require('mini.basics').setup()
+    -- ================== mini.basics ==================
+
     -- ================== mini.files ==================
     vim.keymap.set('n', '-', function()
       files.open(vim.api.nvim_buf_get_name(0), true)
@@ -97,9 +101,12 @@ return {
     require('mini.statusline').setup()
     -- ================== mini.statusline ==================
 
-    -- ================== mini.pairs ==================
+    -- ================== mini ==================
     require('mini.pairs').setup()
-    -- ================== mini.pairs ==================
+    require('mini.ai').setup()
+    require('mini.surround').setup()
+    require('mini.operators').setup()
+    -- ================== mini ==================
 
     -- ================== mini.pick ==================
 
