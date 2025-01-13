@@ -28,3 +28,15 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', '<esc>', vim.cmd.helpclose, { buffer = event.buf })
   end,
 })
+
+-- Create an autocmd group for better organization
+vim.api.nvim_create_augroup('AutoSaveOnFocusLost', { clear = true })
+
+-- Define the autocmd for the event
+vim.api.nvim_create_autocmd('BufLeave', {
+  group = 'AutoSaveOnFocusLost',
+  pattern = '*', -- Match all buffers
+  callback = function()
+    vim.cmd('silent! wa') -- Save all buffers silently
+  end,
+})
