@@ -22,10 +22,7 @@ return {
     metals_config.capabilities = capabilities
     metals_config.on_attach = personal_lspconfig.on_attach(metals_extended_keymaps)
     metals_config.settings = {
-      metalsBinaryPath = vim.g.NVIM_METALS_METALS_EXECUTABLE,
-      sbtScript = vim.g.NVIM_METALS_SBT_EXECUTABLE,
-      scalaCliLauncher = vim.g.NVIM_METALS_SCALA_CLI_EXECUTABLE,
-      javaHome = vim.g.NVIM_METALS_JAVA_HOME,
+      useGlobalExecutable = true,
       verboseCompilation = true,
       autoImportBuild = 'off',
       defaultBspToBuildTool = true,

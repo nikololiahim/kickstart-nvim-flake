@@ -23,7 +23,6 @@ with lib;
   # e.g. p: [p.jsregexp]
   extraLuaPackages ? p: [ ],
   extraPython3Packages ? p: [ ], # Additional python 3 packages
-  withScalaTooling ? null,
   withPython3 ? true, # Build Neovim with Python 3 support?
   withRuby ? true, # Build Neovim with Ruby support?
   withNodeJs ? true, # Build Neovim with NodeJS support?
@@ -107,13 +106,7 @@ let
 
       vim.g.mapleader = " "
       vim.g.maplocalleader = " "
-      ${optionalString (withScalaTooling != null) ''
-        vim.g.NVIM_METALS_JAVA_HOME = "${withScalaTooling.javaHome}"
-        vim.g.NVIM_METALS_METALS_EXECUTABLE = "${withScalaTooling.metals}"
-        vim.g.NVIM_METALS_SCALAFMT_EXECUTABLE = "${withScalaTooling.scalafmt}"
-        vim.g.NVIM_METALS_SBT_EXECUTABLE = "${withScalaTooling.sbt}"
-        vim.g.NVIM_METALS_SCALA_CLI_EXECUTABLE = "${withScalaTooling.scala-cli}"
-      ''}
+
       require("lazy").setup({
         spec = {
           { import = "plugins" },

@@ -80,13 +80,6 @@ let
     plugins = all-plugins;
     inherit extraPackages;
     inherit extraLuaPackages;
-    withScalaTooling = {
-      javaHome = pkgs.jre;
-      sbt = "${pkgs.sbt-with-scala-native}/bin/sbt";
-      metals = "${pkgs.metals.override { jre = pkgs.jre; }}/bin/metals";
-      scalafmt = "${pkgs.scalafmt.override { jre = pkgs.jre; }}/bin/scalafmt";
-      scala-cli = "${pkgs.scala-cli.override { jre = pkgs.jre; }}/bin/scala-cli";
-    };
     withPython3 = false;
     withRuby = false;
     withNodeJs = false;
