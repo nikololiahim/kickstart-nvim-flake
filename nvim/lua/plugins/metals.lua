@@ -24,7 +24,7 @@ return {
     metals_config.settings = {
       useGlobalExecutable = true,
       verboseCompilation = true,
-      autoImportBuild = 'off',
+      autoImportBuild = 'on',
       defaultBspToBuildTool = true,
       showImplicitArguments = true,
       showImplicitConversionsAndClasses = true,
