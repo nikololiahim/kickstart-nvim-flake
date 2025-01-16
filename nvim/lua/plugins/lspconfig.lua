@@ -3,6 +3,7 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
+    '~whynothugo/lsp_lines.nvim',
     {
       'folke/lazydev.nvim',
       ft = 'lua', -- only load on lua files

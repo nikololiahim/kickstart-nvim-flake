@@ -94,6 +94,11 @@
       url = "github:folke/lazydev.nvim";
       flake = false;
     };
+    lsp_lines = {
+      url = "sourcehut:~whynothugo/lsp_lines.nvim";
+      flake = false;
+    };
+
   };
 
   outputs =

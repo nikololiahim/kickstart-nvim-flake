@@ -308,6 +308,22 @@
         "type": "github"
       }
     },
+    "lsp_lines": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1734793049,
+        "narHash": "sha256-jHiIZemneQACTDYZXBJqX2/PRTBoxq403ILvt1Ej1ZM=",
+        "owner": "~whynothugo",
+        "repo": "lsp_lines.nvim",
+        "rev": "a92c755f182b89ea91bd8a6a2227208026f27b4d",
+        "type": "sourcehut"
+      },
+      "original": {
+        "owner": "~whynothugo",
+        "repo": "lsp_lines.nvim",
+        "type": "sourcehut"
+      }
+    },
     "luasnip": {
       "flake": false,
       "locked": {
@@ -508,6 +524,7 @@
         "flake-utils": "flake-utils",
         "lazydev-nvim": "lazydev-nvim",
         "lazygit-nvim": "lazygit-nvim",
+        "lsp_lines": "lsp_lines",
         "luasnip": "luasnip",
         "mini-nvim": "mini-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",

@@ -63,6 +63,7 @@ let
     cmp-buffer
     cmp-path
     flash-nvim
+    (mkNvimPlugin inputs.lsp_lines "lsp_lines.nvim")
     (mkNvimPlugin inputs.dressing-nvim "dressing.nvim")
     (mkNvimPlugin inputs.nvim-lspconfig "nvim-lspconfig")
     (mkNvimPlugin inputs.cmp-nvim-lsp "cmp-nvim-lsp")
