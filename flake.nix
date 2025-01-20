@@ -10,50 +10,50 @@
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     # Plugins
-    # lazy-nvim = {
-    #   url = "github:folke/lazy.nvim";
-    #   flake = false;
-    # };
-    # which-key-nvim = {
-    #   url = "github:folke/which-key.nvim";
-    #   flake = false;
-    # };
-    # tokyonight-nvim = {
-    #   url = "github:folke/tokyonight.nvim";
-    #   flake = false;
-    # };
+    lazy-nvim = {
+      url = "github:folke/lazy.nvim";
+      flake = false;
+    };
+    which-key-nvim = {
+      url = "github:folke/which-key.nvim";
+      flake = false;
+    };
+    tokyonight-nvim = {
+      url = "github:folke/tokyonight.nvim";
+      flake = false;
+    };
     nvim-treesitter = {
       url = "github:nvim-treesitter/nvim-treesitter";
       flake = false;
     };
-    # plenary-nvim = {
-    #   url = "github:nvim-lua/plenary.nvim";
-    #   flake = false;
-    # };
+    plenary-nvim = {
+      url = "github:nvim-lua/plenary.nvim";
+      flake = false;
+    };
     luasnip = {
       url = "github:L3MON4D3/LuaSnip";
       flake = false;
     };
-    # nvim-cmp = {
-    #   url = "github:hrsh7th/nvim-cmp";
-    #   flake = false;
-    # };
+    nvim-cmp = {
+      url = "github:hrsh7th/nvim-cmp";
+      flake = false;
+    };
     cmp-buffer = {
       url = "github:hrsh7th/cmp-buffer";
       flake = false;
     };
-    # cmp-path = {
-    #   url = "github:hrsh7th/cmp-path";
-    #   flake = false;
-    # };
-    # cmp-luasnip = {
-    #   url = "github:saadparwaiz1/cmp_luasnip";
-    #   flake = false;
-    # };
-    # flash-nvim = {
-    #   url = "github:folke/flash.nvim";
-    #   flake = false;
-    # };
+    cmp-path = {
+      url = "github:hrsh7th/cmp-path";
+      flake = false;
+    };
+    cmp-luasnip = {
+      url = "github:saadparwaiz1/cmp_luasnip";
+      flake = false;
+    };
+    flash-nvim = {
+      url = "github:folke/flash.nvim";
+      flake = false;
+    };
     dressing-nvim = {
       url = "github:stevearc/dressing.nvim";
       flake = false;
@@ -70,10 +70,10 @@
       url = "github:j-hui/fidget.nvim";
       flake = false;
     };
-    # nvim-metals = {
-    #   url = "github:scalameta/nvim-metals";
-    #   flake = false;
-    # };
+    nvim-metals = {
+      url = "github:scalameta/nvim-metals";
+      flake = false;
+    };
     mini-nvim = {
       url = "github:echasnovski/mini.nvim";
       flake = false;
