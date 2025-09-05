@@ -13,6 +13,8 @@ vim.opt.showmode = false
 vim.opt.splitright = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
+vim.o.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'lua',
