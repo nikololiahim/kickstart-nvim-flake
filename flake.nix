@@ -98,6 +98,9 @@
       url = "sourcehut:~whynothugo/lsp_lines.nvim";
       flake = false;
     };
+    rustaceanvim = {
+      url = "github:mrcjkb/rustaceanvim";
+    };
 
   };
 

@@ -120,6 +120,11 @@ let
     (mkNvimPlugin inputs.conform-nvim "conform.nvim" { })
     (mkNvimPlugin inputs.nvim-colorizer-lua "nvim-colorizer.lua" { })
     (mkNvimPlugin inputs.lazydev-nvim "lazydev.nvim" { })
+    (mkNvimPlugin inputs.rustaceanvim "rustaceanvim" {
+      nvimSkipModule = [
+        "rustaceanvim.neotest.init"
+      ];
+    })
   ];
 
   nvim-pkg = mkNeovim {
