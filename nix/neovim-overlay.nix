@@ -32,6 +32,9 @@ let
     gcc
     tree-sitter
     nodejs
+    rust-analyzer
+    nixd
+    lua-language-server
   ];
 
   extraLuaPackages =
