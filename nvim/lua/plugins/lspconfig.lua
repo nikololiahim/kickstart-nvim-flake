@@ -24,14 +24,13 @@ return {
     },
   },
   config = function()
-    local lspconfig = require('lspconfig')
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
     local personal_lspconfig = require('config.lsp')
 
     local on_attach = personal_lspconfig.on_attach(personal_lspconfig.keymaps)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    lspconfig['nixd'].setup({
+    vim.lsp.config('nixd', {
       on_init = function(client)
         local path = vim.fs.joinpath(client.root_dir, '.nixd.json')
         local contents = vim.secure.read(path)
@@ -63,9 +62,11 @@ return {
       },
     })
 
-    lspconfig['lua_ls'].setup({
+    vim.lsp.config('lua_ls', {
       capabilities = capabilities,
       on_attach = on_attach,
     })
+
+    vim.lsp.enable({ 'nixd', 'lua_ls' })
   end,
 }

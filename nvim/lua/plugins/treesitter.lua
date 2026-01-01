@@ -8,11 +8,11 @@ return {
     vim.fn.mkdir(parser_install_dir, 'p')
     vim.opt.runtimepath:append(parser_install_dir)
 
-    require('nvim-treesitter.configs').setup({
+    require('nvim-treesitter.config').setup({
       modules = {},
       ignore_install = {},
       ensure_installed = {},
-      parser_install_dir = parser_install_dir,
+      install_dir = parser_install_dir,
       auto_install = true,
       sync_install = false,
       highlight = { enable = true },
