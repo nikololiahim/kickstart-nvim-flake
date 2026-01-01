@@ -65,7 +65,11 @@ let
         "tokyonight.extra.fzf"
       ];
     })
-    (mkNvimPlugin inputs.nvim-treesitter "nvim-treesitter" { })
+    (mkNvimPlugin inputs.nvim-treesitter "nvim-treesitter" {
+      nvimSkipModule = [
+        "nvim-treesitter._meta.parsers"
+      ];
+    })
     (mkNvimPlugin inputs.plenary-nvim "plenary.nvim" {
       nvimSkipModule = [
         "plenary.neorocks.init"
