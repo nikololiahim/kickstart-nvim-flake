@@ -17,7 +17,7 @@ let
   # otherwise it could have an incompatible signature when applying this overlay.
   # pkgs-wrapNeovim = inputs.nixpkgs.legacyPackages.${pkgs.system};
   pkgs-wrapNeovim = import inputs.nixpkgs {
-    inherit (pkgs) system;
+    system = pkgs.stdenv.hostPlatform.system;
     overlays = [
       inputs.neovim-nightly-overlay.overlays.default
       (final: prev: { neovim-unwrapped = prev.neovim; })
