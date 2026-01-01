@@ -38,15 +38,19 @@ return {
         if contents == nil then
           vim.notify('Could not find .nixd.json in the current or parent directories', vim.log.levels.INFO)
           return true
-        end
-        local nixd_settings = vim.json.decode(contents)
-        if nixd_settings == nil then
-          vim.notify('Error while loading nixd_settings from .nixd.json', vim.log.levels.ERROR)
+        elseif type(contents) == 'boolean' then
+          vim.notify('.nixd.json is a directory')
+          return true
+        else
+          local nixd_settings = vim.json.decode(contents)
+          if nixd_settings == nil then
+            vim.notify('Error while loading nixd_settings from .nixd.json', vim.log.levels.ERROR)
+            return true
+          end
+          client.config.settings['nixd'] = nixd_settings
+          client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
           return true
         end
-        client.config.settings['nixd'] = nixd_settings
-        client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
-        return true
       end,
       capabilities = capabilities,
       on_attach = on_attach,
