@@ -125,6 +125,10 @@ return {
       window = {
         config = win_config,
       },
+      mappings = {
+        choose_in_vsplit = '<CR>',
+        choose = '<C-v>',
+      },
     })
     -- ================== mini.pick ==================
 
