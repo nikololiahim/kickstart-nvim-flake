@@ -35,6 +35,9 @@ let
     rust-analyzer
     nixd
     lua-language-server
+    stylua
+    ast-grep
+    nixfmt-rfc-style
   ];
 
   extraLuaPackages =
@@ -132,6 +135,7 @@ let
         "rustaceanvim.neotest.init"
       ];
     })
+    (mkNvimPlugin inputs.grug-far "grug-far.nvim" { })
   ];
 
   nvim-pkg = mkNeovim {

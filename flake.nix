@@ -101,6 +101,10 @@
     rustaceanvim = {
       url = "github:mrcjkb/rustaceanvim";
     };
+    grug-far = {
+      url = "github:MagicDuck/grug-far.nvim";
+      flake = false;
+    };
 
   };
 

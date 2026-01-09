@@ -335,6 +335,22 @@
         "type": "github"
       }
     },
+    "grug-far": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767379322,
+        "narHash": "sha256-5fst3MQxqW7ao19InNiMCuV6G8feRRg6fDJ94eEKoZ0=",
+        "owner": "MagicDuck",
+        "repo": "grug-far.nvim",
+        "rev": "794f03c97afc7f4b03fb6ec5111be507df1850cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MagicDuck",
+        "repo": "grug-far.nvim",
+        "type": "github"
+      }
+    },
     "lazy-nvim": {
       "flake": false,
       "locked": {
@@ -743,6 +759,7 @@
         "fidget-nvim": "fidget-nvim",
         "flake-utils": "flake-utils",
         "flash-nvim": "flash-nvim",
+        "grug-far": "grug-far",
         "lazy-nvim": "lazy-nvim",
         "lazydev-nvim": "lazydev-nvim",
         "lazygit-nvim": "lazygit-nvim",
