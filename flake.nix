@@ -144,7 +144,7 @@
             projectRootFile = "flake.nix";
             programs.nixfmt = {
               enable = true;
-              package = pkgs.nixfmt-rfc-style;
+              package = pkgs.nixfmt;
             };
             programs.stylua = {
               enable = true;
@@ -161,7 +161,7 @@
             nix-tree
             stylua
             nixd
-            nixfmt-rfc-style
+            nixfmt
             self.checks.${system}.pre-commit-check.enabledPackages
           ];
           shellHook = ''

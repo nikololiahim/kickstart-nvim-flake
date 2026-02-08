@@ -37,7 +37,7 @@ let
     lua-language-server
     stylua
     ast-grep
-    nixfmt-rfc-style
+    nixfmt
   ];
 
   extraLuaPackages =
