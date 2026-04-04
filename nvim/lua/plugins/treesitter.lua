@@ -4,9 +4,9 @@ return {
     require('nvim-treesitter.install').update({ with_sync = true })()
   end,
   config = function()
-    local parser_install_dir = vim.fn.stdpath('cache') .. '/treesitter'
+    local parser_install_dir = vim.fn.stdpath('cache') .. '/treesitter/parser'
     vim.fn.mkdir(parser_install_dir, 'p')
-    vim.opt.runtimepath:append(parser_install_dir)
+    vim.opt.runtimepath:prepend(parser_install_dir)
 
     require('nvim-treesitter').setup({
       modules = {},

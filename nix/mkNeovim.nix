@@ -33,16 +33,8 @@ let
 
   # This nixpkgs util function creates an attrset
   # that pkgs.wrapNeovimUnstable uses to configure the Neovim build.
-  neovimConfig = pkgs-wrapNeovim.neovimUtils.makeNeovimConfig {
-    inherit
-      extraLuaPackages
-      extraPython3Packages
-      withPython3
-      withRuby
-      withNodeJs
-      plugins
-      ;
-  };
+  # neovimConfig = pkgs-wrapNeovim.neovimUtils.makeNeovimConfig {
+  # };
 
   # This uses the ignoreConfigRegexes list to filter
   # the nvim directory
@@ -98,77 +90,76 @@ let
   # It wraps the user init.lua, prepends the lua lib directory to the RTP
   # and prepends the nvim and after directory to the RTP
   # It also adds logic for bootstrapping dev plugins (for plugin developers)
-  initLua =
-    ''
-      vim.loader.enable()
-      -- prepend lua directory
-      vim.opt.rtp:prepend('${nvimRtp}/lua')
+  initLua = ''
+    vim.loader.enable()
+    -- prepend lua directory
+    vim.opt.rtp:prepend('${nvimRtp}/lua')
 
-      vim.g.mapleader = " "
-      vim.g.maplocalleader = " "
+    vim.g.mapleader = " "
+    vim.g.maplocalleader = " "
 
-      require("lazy").setup({
-        spec = {
-          { import = "plugins" },
-        },
-        performance = {
-          reset_packpath = false,
-          rtp = {
-            reset = false,
-            disabled_plugins = {
-              "gzip",
-              "tarPlugin",
-              "tohtml",
-              "tutor",
-              "zipPlugin",
-              "netrw",
-            },
+    require("lazy").setup({
+      spec = {
+        { import = "plugins" },
+      },
+      performance = {
+        reset_packpath = false,
+        rtp = {
+          reset = false,
+          disabled_plugins = {
+            "gzip",
+            "tarPlugin",
+            "tohtml",
+            "tutor",
+            "zipPlugin",
+            "netrw",
+          },
+        }
+      },
+      dev = {
+        path = "${
+          pkgs.neovimUtils.packDir {
+            myNeovimPackages = (pkgs.neovimUtils.normalizedPluginsToVimPackage normalizedPlugins);
           }
-        },
-        dev = {
-          path = "${
-            pkgs.neovimUtils.packDir {
-              myNeovimPackages = (pkgs.neovimUtils.normalizedPluginsToVimPackage normalizedPlugins);
-            }
-          }/pack/myNeovimPackages/start",
-          patterns = {""},
-        },
-        install = {
-          -- Safeguard in case we forget to install a plugin with Nix
-          missing = false,
-        },
-        rocks = {
-          enabled = false,
-        },
-      })
+        }/pack/myNeovimPackages/start",
+        patterns = {""},
+      },
+      install = {
+        -- Safeguard in case we forget to install a plugin with Nix
+        missing = false,
+      },
+      rocks = {
+        enabled = false,
+      },
+    })
+  ''
+  # Wrap init.lua
+  + (builtins.readFile ../nvim/init.lua)
+  # Bootstrap/load dev plugins
+  + optionalString (devPlugins != [ ]) (
     ''
-    # Wrap init.lua
-    + (builtins.readFile ../nvim/init.lua)
-    # Bootstrap/load dev plugins
-    + optionalString (devPlugins != [ ]) (
-      ''
-        local dev_pack_path = vim.fn.stdpath('data') .. '/site/pack/dev'
-        local dev_plugins_dir = dev_pack_path .. '/opt'
-        local dev_plugin_path
-      ''
-      + strings.concatMapStringsSep "\n" (plugin: ''
-        dev_plugin_path = dev_plugins_dir .. '/${plugin.name}'
-        if vim.fn.empty(vim.fn.glob(dev_plugin_path)) > 0 then
-          vim.notify('Bootstrapping dev plugin ${plugin.name} ...', vim.log.levels.INFO)
-          vim.cmd('!${pkgs.git}/bin/git clone ${plugin.url} ' .. dev_plugin_path)
-        end
-        vim.cmd('packadd! ${plugin.name}')
-      '') devPlugins
-    )
-    # Prepend nvim and after directories to the runtimepath
-    # NOTE: This is done after init.lua,
-    # because of a bug in Neovim that can cause filetype plugins
-    # to be sourced prematurely, see https://github.com/neovim/neovim/issues/19008
-    # We prepend to ensure that user ftplugins are sourced before builtin ftplugins.
-    + ''
-      vim.opt.rtp:prepend('${nvimRtp}/nvim')
-      vim.opt.rtp:prepend('${nvimRtp}/after')
-    '';
+      local dev_pack_path = vim.fn.stdpath('data') .. '/site/pack/dev'
+      local dev_plugins_dir = dev_pack_path .. '/opt'
+      local dev_plugin_path
+    ''
+    + strings.concatMapStringsSep "\n" (plugin: ''
+      dev_plugin_path = dev_plugins_dir .. '/${plugin.name}'
+      if vim.fn.empty(vim.fn.glob(dev_plugin_path)) > 0 then
+        vim.notify('Bootstrapping dev plugin ${plugin.name} ...', vim.log.levels.INFO)
+        vim.cmd('!${pkgs.git}/bin/git clone ${plugin.url} ' .. dev_plugin_path)
+      end
+      vim.cmd('packadd! ${plugin.name}')
+    '') devPlugins
+  )
+  # Prepend nvim and after directories to the runtimepath
+  # NOTE: This is done after init.lua,
+  # because of a bug in Neovim that can cause filetype plugins
+  # to be sourced prematurely, see https://github.com/neovim/neovim/issues/19008
+  # We prepend to ensure that user ftplugins are sourced before builtin ftplugins.
+  + ''
+    vim.opt.rtp:prepend('${nvimRtp}/nvim')
+    vim.opt.rtp:prepend('${nvimRtp}/after')
+  '';
 
   # Add arguments to the Neovim wrapper script
   extraMakeWrapperArgs =
@@ -194,21 +185,22 @@ let
       }"'';
 
   # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
-  neovim-wrapped = pkgs-wrapNeovim.wrapNeovimUnstable neovim-unwrapped (
-    neovimConfig
-    // {
-      luaRcContent = initLua;
-      wrapperArgs =
-        escapeShellArgs neovimConfig.wrapperArgs
-        + " "
-        + extraMakeWrapperArgs
-        + " "
-        + extraMakeWrapperLuaCArgs
-        + " "
-        + extraMakeWrapperLuaArgs;
-      wrapRc = true;
-    }
-  );
+  neovim-wrapped = pkgs-wrapNeovim.wrapNeovimUnstable neovim-unwrapped ({
+    inherit
+      extraLuaPackages
+      extraPython3Packages
+      withPython3
+      withRuby
+      withNodeJs
+      plugins
+      ;
+    luaRcContent = initLua;
+    wrapperArgs =
+      # escapeShellArgs neovimConfig.wrapperArgs
+      # + " "
+      extraMakeWrapperArgs + " " + extraMakeWrapperLuaCArgs + " " + extraMakeWrapperLuaArgs;
+    wrapRc = true;
+  });
 
 in
 neovim-wrapped
