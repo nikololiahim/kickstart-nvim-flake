@@ -97,7 +97,6 @@ let
         "cmp.context_spec"
       ];
     })
-    (mkNvimPlugin inputs.cmp-buffer "cmp-buffer" { })
     (mkNvimPlugin inputs.cmp-path "cmp-path" { nvimSkipModule = "cmp_path"; })
     (mkNvimPlugin inputs.cmp-luasnip "cmp_luasnip" { nvimSkipModule = "cmp_luasnip"; })
     (mkNvimPlugin inputs.flash-nvim "flash.nvim" { nvimSkipModule = "flash.docs"; })

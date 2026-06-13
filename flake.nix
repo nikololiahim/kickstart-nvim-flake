@@ -38,10 +38,6 @@
       url = "github:hrsh7th/nvim-cmp";
       flake = false;
     };
-    cmp-buffer = {
-      url = "github:hrsh7th/cmp-buffer";
-      flake = false;
-    };
     cmp-path = {
       url = "github:hrsh7th/cmp-path";
       flake = false;
@@ -71,7 +67,7 @@
       flake = false;
     };
     nvim-metals = {
-      url = "github:scalameta/nvim-metals";
+      url = "/home/nikololiahim/github/nvim-metals";
       flake = false;
     };
     mini-nvim = {
