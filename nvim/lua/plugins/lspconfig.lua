@@ -4,14 +4,6 @@ return {
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     {
-      '~whynothugo/lsp_lines.nvim',
-      config = function()
-        -- Disable virtual_text since it's redundant due to lsp_lines.
-        vim.diagnostic.config({ virtual_text = false })
-        vim.diagnostic.config({ virtual_lines = true })
-      end,
-    },
-    {
       'folke/lazydev.nvim',
       ft = 'lua', -- only load on lua files
       opts = {
@@ -62,11 +54,11 @@ return {
       },
     })
 
-    vim.lsp.config('lua_ls', {
+    vim.lsp.config('*', {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
-    vim.lsp.enable({ 'nixd', 'lua_ls' })
+    vim.lsp.enable({ 'nixd', 'lua_ls', 'gopls' })
   end,
 }

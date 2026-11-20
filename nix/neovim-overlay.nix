@@ -100,7 +100,6 @@ let
     (mkNvimPlugin inputs.cmp-path "cmp-path" { nvimSkipModule = "cmp_path"; })
     (mkNvimPlugin inputs.cmp-luasnip "cmp_luasnip" { nvimSkipModule = "cmp_luasnip"; })
     (mkNvimPlugin inputs.flash-nvim "flash.nvim" { nvimSkipModule = "flash.docs"; })
-    (mkNvimPlugin inputs.lsp_lines "lsp_lines.nvim" { })
     (mkNvimPlugin inputs.dressing-nvim "dressing.nvim" { })
     (mkNvimPlugin inputs.nvim-lspconfig "nvim-lspconfig" { })
     (mkNvimPlugin inputs.cmp-nvim-lsp "cmp-nvim-lsp" { })

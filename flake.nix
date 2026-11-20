@@ -2,7 +2,7 @@
   description = "Neovim derivation";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     flake-utils.url = "github:numtide/flake-utils";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     treefmt-nix.url = "github:numtide/treefmt-nix";
@@ -88,10 +88,6 @@
     };
     lazydev-nvim = {
       url = "github:folke/lazydev.nvim";
-      flake = false;
-    };
-    lsp_lines = {
-      url = "sourcehut:~whynothugo/lsp_lines.nvim";
       flake = false;
     };
     rustaceanvim = {
